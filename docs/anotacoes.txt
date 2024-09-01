@@ -9,3 +9,6 @@ centavos = response.css('span.andes-money-amount__cents::text').getall()
 proxima_pagina = response.css('li.andes-pagination__button.andes-pagination__button--next a::attr(href)').get()
 
 descontos = response.css('span.promotion-item__discount-text::text').getall()
+
+
+imagens_produtos = response.css('img.promotion-item__img::attr(src)').getall()

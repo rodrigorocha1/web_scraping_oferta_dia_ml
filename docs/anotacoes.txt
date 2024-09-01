@@ -12,3 +12,7 @@ descontos = response.css('span.promotion-item__discount-text::text').getall()
 
 
 imagens_produtos = response.css('img.promotion-item__img::attr(src)').getall()
+
+promotion-item__seller
+
+marca = response.css('span.promotion-item__seller::text').getall()

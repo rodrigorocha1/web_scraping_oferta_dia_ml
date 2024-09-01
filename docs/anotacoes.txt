@@ -1,2 +1,18 @@
 --- Mercado livre
 https://www.mercadolivre.com.br/ofertas
+response.xpath('//p[@class="promotion-item__title"]/text()').getall() -> pega todos os nomes dos produtos
+
+response.xpath('//span[@class="promotion-item__pill"]/text()').getall() -> pega os fretes grátis
+
+
+//span[@class='andes-money-amount__currency-symbol' and @aria-hidden='true'] |
+//span[@class='andes-visually-hidden' and @aria-hidden='true'] |
+//span[@class='andes-money-amount__cents andes-money-amount__cents--superscript-24' and @style='font-size:12px;margin-top:4px' and @aria-hidden='true']
+
+
+response.xpath('//span[@class="promotion-item__pill"]/text()').getall()
+
+prices = response.css('span.andes-money-amount__fraction::text').getall()
+cents = response.css('span.andes-money-amount__cents::text').getall()
+
+proxima_pagina = response.css('li.andes-pagination__button.andes-pagination__button--next a::attr(href)').get()

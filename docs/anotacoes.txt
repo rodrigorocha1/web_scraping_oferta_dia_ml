@@ -1,8 +1,7 @@
 --- Mercado livre
 https://www.mercadolivre.com.br/ofertas
-response.xpath('//p[@class="promotion-item__title"]/text()').getall() -> pega todos os nomes dos produtos
-response.xpath('//span[@class="promotion-item__pill"]/text()').getall() -> pega os fretes grátis
-response.xpath('//span[@class="promotion-item__pill"]/text()').getall()
+nome_produto = response.xpath('//p[@class="promotion-item__title"]/text()').getall() -> pega todos os nomes dos produtos
+frete_gratis = response.xpath('//span[@class="promotion-item__pill"]/text()').getall() -> pega os fretes grátis
 preco = response.css('span.andes-money-amount__fraction::text').getall()
 centavos = response.css('span.andes-money-amount__cents::text').getall()
 
@@ -13,6 +12,7 @@ descontos = response.css('span.promotion-item__discount-text::text').getall()
 
 imagens_produtos = response.css('img.promotion-item__img::attr(src)').getall()
 
-promotion-item__seller
+
 
 marca = response.css('span.promotion-item__seller::text').getall()
+url_para_pegar_o_id = response.css('a.promotion-item__link-container::attr(href)').getall()

@@ -2,8 +2,7 @@
 https://www.mercadolivre.com.br/ofertas
 nome_produto = response.xpath('//p[@class="promotion-item__title"]/text()').getall() -> pega todos os nomes dos produtos
 frete_gratis = response.xpath('//span[@class="promotion-item__pill"]/text()').getall() -> pega os fretes grátis
-preco = response.css('span.andes-money-amount__fraction::text').getall()
-centavos = response.css('span.andes-money-amount__cents::text').getall()
+
 
 proxima_pagina = response.css('li.andes-pagination__button.andes-pagination__button--next a::attr(href)').get()
 
@@ -16,3 +15,28 @@ imagens_produtos = response.css('img.promotion-item__img::attr(src)').getall()
 
 marca = response.css('span.promotion-item__seller::text').getall()
 url_para_pegar_o_id = response.css('a.promotion-item__link-container::attr(href)').getall()
+
+graf
+
+
+
+//*[@id="root-app"]/div[2]/div[2]/div/ol/li[2]/div/a/div/div[2]/div[2]/div/div/span
+
+//span[@class="andes-money-amount andes-money-amount--cents-superscript"]/text()
+
+andes-money-amount andes-money-amount--cents-superscript" - > pega todo o preço?
+
+
+---------------------------------
+#Preço reais,
+for produto  in response.xpath('//span[@class="andes-money-amount andes-money-amount--cents-superscript"]').getall():
+...     preco = Selector(text=produto).xpath('//span[@class="andes-money-amount__fraction"]/text()').get()
+...     print(preco)
+...     print()
+
+
+# preço centavos
+
+for produto  in response.xpath('//span[@class="andes-money-amount andes-money-amount--cents-superscript"]').getall():
+...     preco = Selector(text=produto).xpath('//span[@class="andes-money-amount__cents andes-money-amount__cents--superscript-24"]/text()').get()
+...     print(preco)

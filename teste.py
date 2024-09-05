@@ -4,6 +4,7 @@ url = "https://www.mercadolivre.com.br/apple-iphone-13-128-gb-rosa-distribuidor-
 
 
 match = re.search(r'/([A-Z0-9]+)\?', url)
+print(match)
 if match:
     value = match.group(1)
     print("Valor encontrado:", value)

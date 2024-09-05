@@ -12,6 +12,9 @@ class MloferadiaSpider(scrapy.Spider):
     pagina_fim = 3
 
     def parse(self, response: Response):
+        self.logger.info(f'*' * 100)
+        self.logger.info(f'Página-{self.pagina_inicio}')
+        self.logger.info(f'*' * 100)
         nome_produtos = response.xpath(
             '//p[@class="promotion-item__title"]/text()').getall()
         precos = response.xpath(
@@ -27,12 +30,24 @@ class MloferadiaSpider(scrapy.Spider):
                 '//span[@class="andes-money-amount__fraction"]/text()').get()
             preco_centavos = Selector(text=preco).xpath(
                 '//span[@class="andes-money-amount__cents andes-money-amount__cents--superscript-24"]/text()').get()
+            marca = marca.css('span.promotion-item__seller::text').get()
             yield {
                 'nome_produto': nome_produto,
                 'preco_reais': preco_reais,
                 'preco_centavos': preco_centavos,
                 'imagem': imagem,
-                'marcas': marca.css('span.promotion-item__seller::text').get(),
-                'url_id': url_id
+                'marcas': marca,
+                'url_id': url_id,
+                'url_extracao': response.url
+
 
             }
+            self.logger.info(f'*' * 100)
+            self.logger.info(f'URL atual: {response.url}')
+
+        if self.pagina_inicio < self.pagina_fim:
+            next_page = response.css(
+                'li.andes-pagination__button.andes-pagination__button--next a::attr(href)').get()
+            if next_page:
+                self.pagina_inicio += 1
+                yield scrapy.Request(url=next_page, callback=self.parse)

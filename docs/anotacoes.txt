@@ -2,6 +2,7 @@
 https://www.mercadolivre.com.br/ofertas
 grade_produtos = response.css('li.promotion-item')
 produto.xpath('//p[@class="promotion-item__title"]/text()').get()
+próxima página = response.css('li.andes-pagination__button.andes-pagination__button--next a::attr(href)').get()
 ---------------------------------
 #Preço reais,
 for produto  in response.xpath('//span[@class="andes-money-amount andes-money-amount--cents-superscript"]').getall():

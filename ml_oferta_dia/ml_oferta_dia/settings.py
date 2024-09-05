@@ -20,7 +20,7 @@ NEWSPIDER_MODULE = "ml_oferta_dia.spiders"
 USER_AGENT = os.environ['USER_AGENT']
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
